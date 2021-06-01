@@ -9,9 +9,8 @@ $product2 = new Product('computer', 'Dell', 400, 0);
 <?php ?>
     <?php
     $user->upgradeMembership(1, 2);
-    $user->addToCart($product1->productToAdd());
-    $user->addToCart($product2->productToAdd());
-
+    $user->addToCart($product1, $product1->inStock);
+    $user->addToCart($product2, $product2->inStock);
 
 
     $user->addPaymentMethod(1, 'Genova', 'Italia');

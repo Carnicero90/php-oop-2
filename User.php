@@ -32,7 +32,7 @@ class User extends MainClass
     function addPaymentMethod($card_number, $billing_address, $country) {
         $this->paymentInfo = new Payment($card_number, $billing_address, $country);
     }
-    function addToCart($product) {
+    function addToCart($product ,$condition=true) {
         // aggiunge prodotto a carrello, se prodotto non ha valore falsy
         if ($product) {
             $this->cart[] = $product;

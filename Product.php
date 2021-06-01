@@ -16,13 +16,6 @@ class Product
         $this->brand = $brand;
         $this->price = $price;
     }
-    public function productToAdd() {
-        // determina se $this disponibile, ritornando un valore falsy se $this->inStock 
-        // e' falsy (aka: sperabilmente === 0)
-        if (!$this->inStock) {
-            return false;
-        }
-        return $this;
-    }
+
 }
 ?>
