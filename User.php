@@ -1,16 +1,18 @@
 <?php
 require_once __DIR__ . '/Common.php';
 require_once __DIR__ . '/Payment.php';
+require_once __DIR__ . '/Product.php';
+
 
 class User extends MainClass
 {
     protected $name;
     protected $lastname;
-    protected $paymentInfo;
+    protected $paymentInfo = false;
     protected $email;
     protected $premium = false;
     protected $address;
-    protected $cart = [];
+    public $cart = [];
     function __construct($name, $lastname, $email)
     {
         $this->name = $name;
@@ -31,7 +33,20 @@ class User extends MainClass
         $this->paymentInfo = new Payment($card_number, $billing_address, $country);
     }
     function addToCart($product) {
-        $this->cart[] = $product;
+        // aggiunge prodotto a carrello, se prodotto non ha valore falsy
+        if ($product) {
+            $this->cart[] = $product;
+        }
+    }
+    function buy() {
+        if (!$this->paymentInfo) {
+            return false;
+        }
+        $total = 0;
+        foreach($this->cart as $item) {
+            $total += $item->price;
+        }
+        return $total;
     }
 
 }

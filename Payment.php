@@ -31,4 +31,3 @@ class Payment extends MainClass {
 }
 ?>
 <?php ?>
-<?php ?>
